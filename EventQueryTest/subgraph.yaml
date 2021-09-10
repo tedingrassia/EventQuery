@@ -1,0 +1,23 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: EventTest
+    network: mainnet
+    source:
+      address: "0xb93CCEA494103993A1642D51e4C38715A4162544"
+      abi: EventTest
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - resultNum
+      abis:
+        - name: EventTest
+          file: ./abis/EventTest.json
+      eventHandlers:
+        - event: resultNum(uint256,uint256,uint256)
+          handler: handleresultNum
+      file: ./src/mapping.ts
